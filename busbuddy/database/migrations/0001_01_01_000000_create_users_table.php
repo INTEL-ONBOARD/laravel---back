@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name'); // Change this if you want a single name field
+            $table->string('last_name'); // Optionally keep this for separate fields
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('contact')->nullable();
+            $table->text('bio')->nullable();
+            $table->enum('role', ['user', 'admin'])->default('user');
             $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
